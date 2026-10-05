@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Zotero LLM Bridge (Unofficial)",
+  "version": "0.1.0",
+  "description": "Unofficial bridge between LLM for Zotero and web AI chats, with Doubao support",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "scripting",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.deepseek.com/*",
+    "https://gemini.google.com/*",
+    "https://www.doubao.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.deepseek.com/*"],
+      "js": ["injected.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.deepseek.com/*",
+        "https://gemini.google.com/*",
+        "https://www.doubao.com/*"
+      ],
+      "js": ["webchat_shared.js", "gemini_adapter.js", "doubao_adapter.js", "content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Zotero LLM Bridge (Unofficial)"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

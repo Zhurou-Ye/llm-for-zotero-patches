@@ -1,0 +1,26 @@
+patched-llm-for-zotero-*.xpi
+==========================
+
+This .xpi is a MODIFIED build of the llm-for-zotero add-on
+(https://github.com/yilewang/llm-for-zotero), Copyright Yile Wang.
+
+Upstream licence: GNU Affero General Public License v3.0 (AGPL-3.0).
+Therefore this modified build is distributed under AGPL-3.0.
+
+You may redistribute it provided you:
+
+  1. keep it under AGPL-3.0, and
+  2. convey the complete corresponding source.
+
+(2) is satisfied by this repository: zotero-patches/apply.py plus
+zotero-patches/patches/*.py rebuild this exact .xpi from a stock upstream
+copy you supply:
+
+    cd zotero-patches
+    python apply.py --xpi /path/to/llm-for-zotero.xpi
+
+The build strips update_url and bumps the version to .N+1 so it cannot
+silently overwrite itself from upstream. Upstream's own TypeScript sources
+remain in the upstream repository and are the property of their authors.
+
+Do not strip the notices above when redistributing.

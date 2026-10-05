@@ -1,0 +1,29 @@
+# Normalise line endings on checkin.
+#
+# The patch scripts match multi-line anchors against the add-on bundle with
+# exact string comparison, and several of those anchors span lines. Git's
+# default `core.autocrlf=true` on Windows rewrites LF -> CRLF in the working
+# tree, which changes those files' bytes and makes a bundle that patches
+# cleanly on Linux fail to patch on Windows (or vice versa) with a confusing
+# "anchor not found". Pinning the text files to LF in the repository keeps
+# every contributor's checkout byte-identical to what was tested.
+#
+# The .xpi is binary and must never be touched.
+* text=auto eol=lf
+
+*.py    text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.xhtml text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.svg   text eol=lf
+
+*.xpi   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary

@@ -1,0 +1,39 @@
+# --- Upstream source: must NEVER be committed -----------------------
+# The AGPL requires conveying source, but this project distributes *patch
+# scripts* instead, and they read the user's own copy of the official add-on.
+# Committing an unpacked upstream bundle would be a licence violation and
+# would make the history uncleanable.
+.build/
+.build2/
+.dispatch-fix-work/
+*_work/
+work/
+zotero-llm-src/
+llmforzotero_unpacked/
+
+# Official (unpatched) upstream add-on, if a user drops one in to build.
+llm-for-zotero.xpi
+zotero-llm@github.com.yilewang.xpi
+*official*.xpi
+
+# --- Build artefacts that are not the shipped .xpi --------------------
+*.orig.bak
+*.corrupt-*
+*.zip
+node_modules/
+
+# Produced by install.py
+browser-extension-installed/
+
+# --- Python noise -----------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# --- Editor / OS ------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

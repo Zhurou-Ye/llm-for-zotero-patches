@@ -1,0 +1,48 @@
+MIT License
+
+Copyright (c) 2026 zotero-llm-bridge contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---------------------------------------------------------------------------
+NOTE ON SCOPE
+---------------------------------------------------------------------------
+This MIT licence covers ONLY the original material in this repository:
+
+  * install.py
+  * zotero-patches/apply.py
+  * zotero-patches/patches/*.py      (the patch scripts)
+  * zotero-patches/tests/*.js
+  * zotero-patches/probe_doubao_dom.js
+
+It does NOT cover:
+
+  * dist/patched-llm-for-zotero-*.xpi
+  * browser-extension/
+
+Those are derivative works of third-party projects and carry their own
+licences. See NOTICE.md for the full breakdown. The short version:
+
+  * The patched .xpi is a derivative of llm-for-zotero, which is licensed
+    AGPL-3.0. The .xpi is therefore offered under AGPL-3.0.
+  * browser-extension/ is a derivative of sync-for-zotero, which is licensed
+    Apache-2.0. Those files keep the Apache-2.0 licence and the notices
+    required by section 4 of that licence.
+
+No MIT grant in this file extends to either of those.

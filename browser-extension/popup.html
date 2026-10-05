@@ -1,0 +1,153 @@
+// SPDX-License-Identifier: Apache-2.0
+//
+// This file is a MODIFIED version of sync-for-zotero
+// (https://github.com/yilewang/sync-for-zotero), Copyright Yile Wang,
+// licensed under the Apache License, Version 2.0 (see ./LICENSE).
+//
+// Changes made by the zotero-llm-bridge contributors:
+//   - Displays the background buildId.
+//
+// Under Apache-2.0 section 4(b) this notice is retained in the source form of
+// the derivative work. It is NOT relicensed; the file remains Apache-2.0.
+//
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zotero LLM Bridge (Unofficial)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      width: 280px;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #a78bfa;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    h1 img { width: 18px; height: 18px; }
+
+    .subtitle {
+      font-size: 10px;
+      color: #6b7280;
+      margin: -8px 0 0 24px;
+      line-height: 1.4;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #6b7280;
+      margin-bottom: 8px;
+      margin-top: 14px;
+    }
+    .section-label:first-of-type { margin-top: 0; }
+
+    /* Wiring indicators */
+    .indicators {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.03);
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot.green  { background: #4ade80; box-shadow: 0 0 4px #4ade8066; }
+    .dot.red    { background: #f87171; box-shadow: 0 0 4px #f8717166; }
+    .dot.yellow { background: #fbbf24; box-shadow: 0 0 4px #fbbf2466; }
+    .dot.blue   { background: #60a5fa; box-shadow: 0 0 4px #60a5fa66; }
+    .dot.gray   { background: #6b7280; }
+
+    .indicator-label { flex: 1; color: #9ca3af; }
+    .indicator-value { font-weight: 500; }
+
+    .indicator-value.ok      { color: #4ade80; }
+    .indicator-value.error   { color: #f87171; }
+    .indicator-value.running { color: #60a5fa; }
+    .indicator-value.idle    { color: #9ca3af; }
+
+    /* Pipeline status badge */
+    .status-badge {
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+      word-break: break-word;
+      margin-top: 4px;
+    }
+    .status-idle    { background: #1e3a5f; color: #9ca3af; }
+    .status-running { background: #1c3a5e; color: #60a5fa; }
+    .status-done    { background: #14532d; color: #4ade80; }
+    .status-error   { background: #450a0a; color: #f87171; }
+
+    /* Info section */
+    .info {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    .info a {
+      color: #60a5fa;
+      text-decoration: none;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" alt="" /> Zotero LLM Bridge (Unofficial)</h1>
+  <p class="subtitle">Unofficial patch build &middot; not endorsed by the upstream authors</p>
+
+  <div class="section-label">Connection Status</div>
+  <div class="indicators">
+    <div class="indicator">
+      <span class="dot gray" id="dot-host"></span>
+      <span class="indicator-label">Zotero Relay</span>
+      <span class="indicator-value idle" id="val-host">Checking…</span>
+    </div>
+    <div class="indicator">
+      <span class="dot gray" id="dot-tab"></span>
+      <span class="indicator-label" id="label-tab">Chat Site</span>
+      <span class="indicator-value idle" id="val-tab">Checking…</span>
+    </div>
+    <div class="indicator">
+      <span class="dot gray" id="dot-pipeline"></span>
+      <span class="indicator-label">Pipeline</span>
+      <span class="indicator-value idle" id="val-pipeline">Checking…</span>
+    </div>
+  </div>
+
+  <div class="section-label">Pipeline Status</div>
+  <div class="status-badge status-idle" id="status-badge">Idle</div>
+
+  <div class="info" id="info"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
