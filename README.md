@@ -213,4 +213,7 @@ node zotero-patches/tests/test_search_loop.js /path/to/llmforzotero.js
 | `dist/*.xpi`（llm-for-zotero 衍生品） | **AGPL-3.0** |
 | `browser-extension/**`（sync-for-zotero 衍生品） | **Apache-2.0**，见其目录内 `LICENSE` 与 `CHANGES.md` |
 
+GitHub 侧栏会把本仓库标为 **Other**（`NOASSERTION`）——这是对的：这里有三种不同许可，
+GitHub 的自动识别只能选一个，写死任何一个都会误导用户。请以上表为准。
+
 发布 `.xpi` 之所以合规，是因为**同一仓库里提供了完整的重建脚本**（AGPL 要求的"提供可构建源码"）。补丁脚本只保存字符串锚点和替换逻辑，运行时才去读用户本地已有的那份xpi，仓库内不含任何上游源码。
