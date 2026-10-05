@@ -4,7 +4,7 @@
 // (https://github.com/yilewang/sync-for-zotero), Copyright Yile Wang,
 // licensed under the Apache License, Version 2.0 (see ./LICENSE).
 //
-// Changes made by the zotero-llm-bridge contributors:
+// Changes made by the llm-for-zotero-patches contributors:
 //   - Displays the background buildId so a reloaded extension can be confirmed.
 //
 // Under Apache-2.0 section 4(b) this notice is retained in the source form of

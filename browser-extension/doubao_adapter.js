@@ -4,7 +4,7 @@
 // (https://github.com/yilewang/sync-for-zotero), Copyright Yile Wang,
 // licensed under the Apache License, Version 2.0 (see ./LICENSE).
 //
-// Changes made by the zotero-llm-bridge contributors:
+// Changes made by the llm-for-zotero-patches contributors:
 //   - NEW FILE. Upstream ships no Doubao adapter at all.
 //   - Candidate-first node resolution instead of a single hardcoded selector,
 //     because Doubao changes its markup frequently.
@@ -16,7 +16,7 @@
 // the derivative work. It is NOT relicensed; the file remains Apache-2.0.
 //
 
-// Doubao (www.doubao.com) site adapter for Zotero LLM Bridge.
+// Doubao (www.doubao.com) site adapter for llm-for-zotero Bridge.
 //
 // Doubao's DOM is rewritten often, so instead of betting on one fixed class
 // name this adapter probes a ranked list of candidates at call time and

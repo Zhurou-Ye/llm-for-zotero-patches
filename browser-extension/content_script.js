@@ -4,7 +4,7 @@
 // (https://github.com/yilewang/sync-for-zotero), Copyright Yile Wang,
 // licensed under the Apache License, Version 2.0 (see ./LICENSE).
 //
-// Changes made by the zotero-llm-bridge contributors:
+// Changes made by the llm-for-zotero-patches contributors:
 //   - Doubao support: turn binding via per-role ordinal message keys, a
 //     submit-time baseline snapshot, and a pre-existing-turn guard at both poll
 //     and emit time so a re-keyed DOM can never return an earlier answer.
@@ -435,7 +435,7 @@ const shared = globalThis.SyncZoteroShared || {
     ),
   WEBCHAT_PLUGIN_OUTDATED_MESSAGE:
     "The installed LLM for Zotero plugin is too old for this version of " +
-    "Zotero LLM Bridge. Update the LLM for Zotero plugin in " +
+    "llm-for-zotero Bridge. Update the llm-for-zotero add-on in " +
     "Zotero (Tools → Plugins and Themes), then try again. " +
     "No prompt or PDF was sent.",
   unsupportedDeliveryContractMessage: (requestedVersion, supportedVersions) => {
@@ -444,9 +444,9 @@ const shared = globalThis.SyncZoteroShared || {
       .filter((version) => Number.isInteger(version) && version > 0);
     return (
       `This Zotero request uses WebChat delivery contract ` +
-      `${Number(requestedVersion)}, but the installed Zotero LLM Bridge ` +
+      `${Number(requestedVersion)}, but the installed llm-for-zotero Bridge ` +
       `extension only supports version ${supported.join(", ") || "none"}. ` +
-      "Update the Zotero LLM Bridge browser extension, then try again. " +
+      "Update the llm-for-zotero Bridge browser extension, then try again. " +
       "No prompt or PDF was sent."
     );
   },

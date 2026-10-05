@@ -1,6 +1,6 @@
 /* eslint-env browser */
 // ---------------------------------------------------------------------------
-// Zotero LLM Bridge — doubao.com DOM probe
+// llm-for-zotero Bridge — doubao.com DOM probe
 //
 // WHY THIS EXISTS
 //   doubao.com is client-rendered, so the adapter's selectors cannot be derived

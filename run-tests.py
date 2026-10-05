@@ -35,6 +35,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SUITES = [
     ("zotero-patches/tests/test_search_loop.js", None),
     ("zotero-patches/tests/test_segment_stall.js", None),
+    ("zotero-patches/tests/test_readme_claims.js", None),
     ("browser-extension/tests/verify_doubao_focus_and_completion.js", None),
     ("browser-extension/tests/verify_doubao_userturn_binding.js", None),
     ("browser-extension/tests/verify_doubao_media.js", None),

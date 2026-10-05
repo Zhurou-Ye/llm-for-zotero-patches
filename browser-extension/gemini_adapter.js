@@ -4,7 +4,7 @@
 // (https://github.com/yilewang/sync-for-zotero), Copyright Yile Wang,
 // licensed under the Apache License, Version 2.0 (see ./LICENSE).
 //
-// Changes made by the zotero-llm-bridge contributors:
+// Changes made by the llm-for-zotero-patches contributors:
 //   - Four-tier fallback for locating the hidden file input: an already-mounted
 //     input, then clicking the composer control, then clicking the upload menu
 //     item (Chinese and English labels), then a document-wide search that

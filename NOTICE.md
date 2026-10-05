@@ -9,17 +9,28 @@ All trademarks belong to their respective owners.
 
 Apache-2.0 section 6 grants the copyright licence but explicitly does **not**
 grant permission to use the licensor's trade names, trademarks or product
-names. Shipping a modified build under the upstream product's own name would
-fall outside that grant, and it is also practically confusing: our build
-carried a higher version number than the upstream release, so a user with both
-installed could not tell which one was which and could reasonably believe the
-upstream author had published our Doubao work.
+names. Shipping a modified build under the *browser extension's* own product
+name would fall outside that grant, and it is also practically confusing: our
+build carried a higher version number than the upstream release, so a user with
+both installed could not tell which one was which and could reasonably believe
+the upstream author had published our Doubao work.
 
-The extension is therefore named **`Zotero LLM Bridge (Unofficial)`** and
-versioned independently of upstream (we start at `0.1.0`; upstream is at
-`0.0.17`). We keep the upstream name only where Apache-2.0 section 6 allows
-it: in notices describing the origin of the work. Every modified file still
-carries the original copyright attribution.
+The extension is therefore named **`llm-for-zotero Bridge (Unofficial)`** and
+versioned independently of upstream (we start at `0.1.0`; the browser-extension
+upstream is at `0.0.17`).
+
+Our name does contain the string `llm-for-zotero`, and that is deliberate. That
+is the name of the **Zotero add-on** this project patches — a different product,
+under a different licence (AGPL-3.0), which we are not redistributing under its
+own name. Apache-2.0 section 6 permits using a name "as reasonably necessary to
+describe the origin of the work"; naming the extension after the add-on it
+extends describes exactly that, and `(Unofficial)` plus the in-product notice
+state the relationship plainly so no user can mistake it for the add-on itself.
+
+We keep both upstream names only where section 6 allows it: in notices
+describing the origin of the work. Every modified file still carries the
+original copyright attribution, and the browser extension is versioned on its
+own line so it can never be mistaken for an official release.
 
 ---
 
@@ -63,7 +74,7 @@ in its repository and remain the property of their authors.
 **Apache-2.0**. Per section 4 of that licence the attribution notices are
 retained: every changed file keeps the original copyright line and adds a
 header naming what we changed, and the full licence text is shipped alongside.
-The product has been renamed to `Zotero LLM Bridge (Unofficial)` — see the
+The product has been renamed to `llm-for-zotero Bridge (Unofficial)` — see the
 section above for why.
 
 Our changes to that project are substantial and worth naming:
@@ -102,5 +113,7 @@ the Zotero side, the portable Node detection, and the installer. MIT; see
 "Sync for Zotero", "llm-for-zotero", "Zotero", "Doubao" and "Tavily" are
 trademarks of their respective owners. This project is an independent
 compatibility layer and claims no endorsement. We use those names only to
-describe what this project connects to, which is the use Apache-2.0 section 6
-permits; no product of ours is named after any of them.
+describe what this project connects to and what it patches, which is the use
+Apache-2.0 section 6 permits. Our extension appends "Bridge (Unofficial)" to
+the add-on name it extends and is versioned on an independent line, so it
+cannot be mistaken for an official build of either upstream product.

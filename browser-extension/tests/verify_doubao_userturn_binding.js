@@ -368,7 +368,7 @@ section("8. build id and syntax are current");
     "extension is not named after the upstream product",
     manifest.name !== "Sync for Zotero" &&
       manifest.action.default_title !== "Sync for Zotero" &&
-      manifest.name === "Zotero LLM Bridge (Unofficial)",
+      manifest.name === "llm-for-zotero Bridge (Unofficial)",
     `name=${manifest.name}`,
   );
   check(

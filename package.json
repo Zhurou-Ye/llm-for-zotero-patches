@@ -1,8 +1,8 @@
 {
-  "name": "zotero-llm-bridge",
+  "name": "llm-for-zotero-patches",
   "version": "0.1.0",
   "private": true,
-  "description": "Key-less web search patches and a Doubao bridge for llm-for-zotero. Unofficial.",
+  "description": "Unofficial patches for the llm-for-zotero Zotero add-on: key-less web search and a Doubao bridge.",
   "license": "MIT",
   "scripts": {
     "test": "python run-tests.py"

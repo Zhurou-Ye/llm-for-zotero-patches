@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Zotero LLM Bridge (Unofficial)",
+  "name": "llm-for-zotero Bridge (Unofficial)",
   "version": "0.1.0",
-  "description": "Unofficial bridge between LLM for Zotero and web AI chats, with Doubao support",
+  "description": "Unofficial patch build for llm-for-zotero: bridge web AI chats (Doubao and others) into Zotero notes",
   "minimum_chrome_version": "102",
   "permissions": [
     "tabs",
@@ -42,7 +42,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Zotero LLM Bridge (Unofficial)"
+    "default_title": "llm-for-zotero Bridge (Unofficial)"
   },
   "icons": {
     "16": "icons/icon16.png",
