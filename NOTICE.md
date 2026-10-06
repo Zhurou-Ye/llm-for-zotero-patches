@@ -104,9 +104,14 @@ another one that is free.
 ## What is ours
 
 Everything under `zotero-patches/` and `install.py` — the search-quality work,
-the per-run search ledger, the segment-stall guard, the Doubao integration on
-the Zotero side, the portable Node detection, and the installer. MIT; see
-`LICENSE-MIT.txt`.
+the per-run search ledger, the Doubao integration on the Zotero side, the
+portable Node detection, and the installer. MIT; see `LICENSE-MIT.txt`.
+
+The segment-stall guard in `patch_agent_segment.py` belongs here too, but it
+is worth being precise about what it is: we hit that failure while debugging
+our own free-search provider (the upstream stall branch does discard a
+half-finished answer, and the transcript says so), so it is an incidental fix
+rather than a headline feature of this project.
 
 ## Trademarks
 
