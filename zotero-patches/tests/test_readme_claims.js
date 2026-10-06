@@ -70,15 +70,31 @@ if (targetsBlock) {
     "targets present: " + ids.join(", "));
 }
 
-// The README must state that Doubao is new, not broken-but-existing.
+// The README must state that Doubao is new, not broken-but-existing. Matched
+// against several wordings so the check keeps working when the prose is
+// rewritten into a more formal register.
 check("README says Doubao is absent upstream",
-  /上游.{0,20}(根本)?没有豆包|没有豆包|豆包.{0,10}从零/.test(readme),
-  'README should say upstream has no Doubao at all (e.g. "上游根本没有豆包")');
+  /(没有豆包|不存在豆包|豆包.{0,6}不存在|无豆包|豆包.{0,8}(全新|新加)|absent from upstream|no Doubao)/i.test(readme),
+  'README should say upstream has no Doubao at all (e.g. "Doubao is absent from upstream in its entirety")');
+
+// Deliberately word-order agnostic. Upstream has no Doubao at all, so ANY
+// suggestion that a Doubao entry exists there and is merely malformed is
+// false. Matching on co-occurrence rather than on a fixed phrase means a
+// rewrite into a different register cannot smuggle the claim back in.
+const blankClaim = /(空白|blank|empty|broken|malformed|render[s]?\s+nothing)/i;
 check("README does not claim a broken/blank Doubao card upstream",
-  !/原版.{0,30}豆包.{0,20}(空白|坏掉|坏死)|豆包.{0,10}卡片.{0,10}空白/.test(readme),
-  'upstream has no Doubao card; remove the "blank card" framing');
+  !(blankClaim.test(readme) && /(豆包|doubao)/i.test(readme)),
+  'upstream has no Doubao card; remove any "blank/broken card" framing');
+// The occurrence count is the load-bearing evidence for "Doubao is absent",
+// so pin it. Upstream v3.9.10 and sync-for-zotero main both yield zero.
+check("README states the Doubao occurrence count as zero",
+  /(occurs?\s+\**0\s*\**\s*times|出现\s*\**0\s*\**\s*次|0\s*次)/i.test(readme),
+  'README should state that "doubao" occurs 0 times in the upstream sources');
+check("README does not quote a non-zero Doubao occurrence count",
+  !/occurs?\s+\**[1-9]\d*\s*\**\s*times|出现\s*\**[1-9]\d*\s*\**\s*次/i.test(readme),
+  "upstream contains no Doubao reference at all; the count must be 0");
 check("README does not attribute data-testid keying to upstream",
-  !/原版按\s*`?data-testid`?\s*当身份/.test(readme),
+  !/(原版|upstream).{0,20}(按|uses|keys on)\s*`?data-testid`?\s*(当身份|as (the )?identity)/i.test(readme),
   "data-testid keying was our own first adapter, not upstream's");
 
 // --- agent round cap ------------------------------------------------------
@@ -107,9 +123,11 @@ const tavilyLen = /Tavily\s+(\d+)/.exec(q);
 check("patch_search_quality documents both snippet lengths",
   Boolean(freeLen && tavilyLen));
 if (freeLen && tavilyLen) {
+  // "58 characters" in English prose, "58 字符" in Chinese. Accept either.
+  const freeOk = new RegExp(freeLen[1] + "\\s*(characters|字符)").test(readme);
   check("README quotes the free-engine snippet length (" + freeLen[1] + ")",
-    readme.includes(freeLen[1] + " 字符"),
-    'README should say "' + freeLen[1] + ' 字符"');
+    freeOk,
+    'README should say "' + freeLen[1] + ' characters"');
   check("README quotes Tavily's snippet length (" + tavilyLen[1] + ")",
     readme.includes(tavilyLen[1]),
     'README should mention "' + tavilyLen[1] + '"');
@@ -131,8 +149,11 @@ if (sim) {
 const budget = /maxWebSearchesPerRun,\s*default\s*(\d+)/.exec(loopPatch);
 check("patch_search_loop declares a default budget", Boolean(budget));
 if (budget) {
+  // "default 6" in English prose, "默认 6 次" in Chinese. Accept either.
+  const budgetOk = new RegExp("default\\s+" + budget[1] + "\\b").test(readme) ||
+    new RegExp("默认\\s*" + budget[1] + "\\s*次").test(readme);
   check("README quotes the default budget (" + budget[1] + ")",
-    readme.includes("默认 " + budget[1] + " 次"),
+    budgetOk,
     'README should say the default is ' + budget[1]);
 }
 
